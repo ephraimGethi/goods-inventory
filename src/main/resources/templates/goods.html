@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>all goods page</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
+rel="stylesheet" 
+integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">EPHRAIM STORES INVENTORY SYSTEM</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="#">HOME</a>
+        <a class="nav-link" href="#"></a>
+        <a class="nav-link" href="#">PRICING MANAGEMENT</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<a class="btn btn-primary mb-3" th:href="@{goods/add_product}">ADD NEW PRODUCT</a>
+<div class="container">
+<div class="row">
+<h3 class="text-center"><i><b>GOODS AVAILABLE IN OUR STORE</b></i></h3>
+
+<table class="table table-striped table-hover">
+<thead>
+<tr>
+<th>ID</th>
+<th>MONTH BROUGHT IN</th>
+<th>ITEM NAME</th>
+<th>ITEM DESCRIPTION</th>
+<th>ACTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="good:${goods}">
+<td th:text="${good.id}"></td>
+<td th:text="${good.month}"></td>
+<td th:text="${good.itemName}"></td>
+<td th:text="${good.itemDescription}"></td>
+<td>
+<a th:href = "@{/goods/update_product{id}(id=${good.id})}" class = "btn btn-primary">Update</a>
+<a th:href = "@{/goods/{id}(id=${good.id})}" class = "btn btn-danger">DELETE</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</body>
+</html>
